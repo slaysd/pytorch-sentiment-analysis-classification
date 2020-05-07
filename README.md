@@ -1,2 +1,11 @@
-# pytorch-sentiment-analysis-classification
-RNN, LSTM, Bi-LSTM, LSTM+Attention, CNN
+# Sentiment Analysis Classification
+
+## Framework
+Pytorch
+
+## Implement
+- RNN
+- LSTM
+- Bi-LSTM
+- LSTM+Attention
+- CNN
