@@ -1,7 +1,10 @@
 # Sentiment Analysis Classification
 
 ## Framework
-Pytorch
+- Pytorch
+
+## Datasets
+- Cornell MR(movie review) Dataset
 
 ## Implement
 - RNN
