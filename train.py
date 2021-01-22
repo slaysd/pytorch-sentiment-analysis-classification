@@ -91,7 +91,7 @@ def binary_accuracy(preds, y):
     """
 
     # round predictions to the closest integer
-    rounded_preds = torch.round(F.sigmoid(preds))
+    rounded_preds = torch.round(torch.sigmoid(preds))
     # convert into float for division
     correct = (rounded_preds == y).float()
     acc = correct.sum() / len(correct)
@@ -138,7 +138,7 @@ def main(args):
     elif args.optim == 'adam':
         print("Optim: Adam")
         optimizer = optim.Adam(model.parameters(), lr=args.lr)
-    criterion = nn.BCEWithLogitsLoss(size_average=True).to(device)
+    criterion = nn.BCEWithLogitsLoss(reduction='mean').to(device)
 
     best_acc = 0
     for epoch in range(args.epoch):

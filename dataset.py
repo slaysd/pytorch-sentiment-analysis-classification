@@ -13,7 +13,7 @@ class MyDataset(object):
     def __init__(self, root_dir='data', batch_size=64, use_vector=True):
         self.TEXT = Field(sequential=True, use_vocab=True,
                           tokenize='spacy', lower=True, batch_first=True)
-        self.LABEL = LabelField(tensor_type=torch.FloatTensor)
+        self.LABEL = LabelField(dtype=torch.float)
         vectors = Vectors(name='mr_vocab.txt', cache='./')
 
         dataset_path = os.path.join(root_dir, '{}.tsv')
