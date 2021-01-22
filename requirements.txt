@@ -1,0 +1,5 @@
+tensorboardx
+argparse
+spacy
+torch
+torchtext==0.6.0
