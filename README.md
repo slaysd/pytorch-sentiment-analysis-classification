@@ -1,5 +1,17 @@
 # Sentiment Analysis Classification
 
+## Prerequisite
+
+### Install dependencies
+```bash
+pip install -r requiements.txt
+```
+
+### Install spacy english data
+```bash
+python -m spacy download en
+```
+
 ## Framework
 - Pytorch
 
