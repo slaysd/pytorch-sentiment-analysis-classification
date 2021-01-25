@@ -10,12 +10,11 @@ torch.cuda.manual_seed(1234)
 
 class MyDataset(object):
 
-    def __init__(self, root_dir='data', batch_size=64, use_vector=True):
+    def __init__(self, root_dir='data', batch_size=64, use_vector=True, pdevice = 'cpu'):
         self.TEXT = Field(sequential=True, use_vocab=True,
                           tokenize='spacy', lower=True, batch_first=True)
         self.LABEL = LabelField(dtype=torch.float)
         vectors = Vectors(name='mr_vocab.txt', cache='./')
-
         dataset_path = os.path.join(root_dir, '{}.tsv')
         self.dataset = {}
         self.dataloader = {}
@@ -33,7 +32,7 @@ class MyDataset(object):
             self.LABEL.build_vocab(self.dataset[target])
             self.dataloader[target] = Iterator(self.dataset[target],
                                                batch_size=batch_size,
-                                               device=None,
+                                               device=pdevice,
                                                repeat=False,
                                                sort_key=lambda x: len(x.text),
                                                shuffle=True)
