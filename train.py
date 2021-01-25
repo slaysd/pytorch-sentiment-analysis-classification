@@ -100,7 +100,7 @@ def binary_accuracy(preds, y):
 
 def main(args):
     device = torch.device('cuda' if torch.cuda.is_available() and args.cuda else 'cpu')
-    dataset = MyDataset(batch_size=args.batch_size, use_vector=args.word_vector)
+    dataset = MyDataset(batch_size=args.batch_size, use_vector=args.word_vector, pdevice = device)
 
     # Hyper parameters
     INPUT_DIM = len(dataset.TEXT.vocab)
