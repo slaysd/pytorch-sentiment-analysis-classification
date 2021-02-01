@@ -4,7 +4,7 @@
 
 ### Install dependencies
 ```bash
-pip install -r requiements.txt
+pip install -r requirements.txt
 ```
 
 ### Install spacy english data
