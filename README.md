@@ -9,7 +9,7 @@ pip install -r requirements.txt
 
 ### Install spacy english data
 ```bash
-python -m spacy download en
+python -m spacy download en_core_web_sm
 ```
 
 ## Framework

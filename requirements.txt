@@ -1,5 +1,5 @@
-tensorboardx
-argparse
-spacy
-torch
+tensorboardx==2.4
+argparse~=1.4.0
+spacy~=3.0.6
+torch~=1.9.0
 torchtext==0.6.0
