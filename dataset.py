@@ -11,7 +11,7 @@ torch.cuda.manual_seed(1234)
 class MyDataset(object):
 
     def __init__(self, root_dir='data', batch_size=64, use_vector=True, pdevice = 'cpu'):
-        self.TEXT = Field(sequential=True, use_vocab=True,
+        self.TEXT = Field(sequential=True, use_vocab=True, tokenizer_language='en_core_web_sm',
                           tokenize='spacy', lower=True, batch_first=True)
         self.LABEL = LabelField(dtype=torch.float)
         vectors = Vectors(name='mr_vocab.txt', cache='./')
