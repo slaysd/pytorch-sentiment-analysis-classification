@@ -97,16 +97,10 @@ def binary_accuracy(preds, y):
     acc = correct.sum() / len(correct)
     return acc
 
-
-def main(args):
-    device = torch.device('cuda' if torch.cuda.is_available() and args.cuda else 'cpu')
-    dataset = MyDataset(batch_size=args.batch_size, use_vector=args.word_vector, pdevice = device)
-
+def build_model(args, device, dataset):
     # Hyper parameters
     INPUT_DIM = len(dataset.TEXT.vocab)
     OUTPUT_DIM = 1
-
-    # TODO: SVM
 
     if args.model == 'rnn':
         print("Model: Vanila RNN")
@@ -131,7 +125,14 @@ def main(args):
 
     if args.word_vector:
         model.embedding.weight.data.copy_(dataset.TEXT.vocab.vectors)
+    
+    return model
 
+def main(args):
+    device = torch.device('cuda' if torch.cuda.is_available() and args.cuda else 'cpu')
+    dataset = MyDataset(batch_size=args.batch_size, use_vector=args.word_vector, pdevice = device)
+
+    model = build_model(args, device, dataset)
     if args.optim == 'sgd':
         print("Optim: SGD")
         optimizer = optim.SGD(model.parameters(), lr=args.lr)
@@ -174,7 +175,10 @@ def main(args):
                     args.model, args.optim, args.batch_size, args.hd, test_acc
                 )
     writer.add_text('Test acc', str(acc_result))
-    torch.save(pth, filename)
+    torch.save({
+        "args": args,
+        "pth": pth,
+    }, filename)
 
 
 def train(model, iterator, optimizer, criterion):
