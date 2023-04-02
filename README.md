@@ -1,4 +1,5 @@
 # Sentiment Analysis Classification
+- [Try Hands-on notebook!](hands-on.ipynb) 
 
 ## Prerequisite
 
